@@ -1,4 +1,4 @@
-#stage 2
+#stage 3
 line0 = ["-", "-", "-"]
 line1 = ["-", "-", "-"]
 line2 = ["-", "-", "-"]
@@ -78,6 +78,35 @@ def p2turn():
 
   display()
 
-while True:
+
+def win():
+  if line0[0]+line0[1]+line0[2]==("XXX"or"OOO"):
+    return True
+  elif line1[0]+line1[1]+line1[2]==("XXX"or"OOO"):
+    return True
+  elif line2[0]+line2[1]+line2[2]==("XXX"or"OOO"):
+    return True
+  elif line0[0]+line1[0]+line2[0]==("XXX"or"OOO"):
+    return True
+  elif line0[1]+line1[1]+line2[1]==("XXX"or"OOO"):
+    return True
+  elif line0[2]+line1[2]+line2[2]==("XXX"or"OOO"):
+    return True
+  elif line0[0]+line1[1]+line2[2]==("XXX"or"OOO"):
+    return True
+  elif line0[2]+line1[1]+line2[0]==("XXX"or"OOO"):
+    return True
+  else:
+    return False
+
+for x in range(9):
   p1turn()
+  if win()==True:
+    print("Player 1 wins")
+    break
   p2turn()
+  if win()==True:
+    print("Player 2 wins")
+    break
+if win()==False:
+  print("Its a tie")
